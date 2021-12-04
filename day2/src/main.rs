@@ -13,15 +13,16 @@ fn main() {
 
     for line in &measurement {
         let command: Vec<&str> = line.clone().split(" ").collect();
+        let value = command[1].parse::<i32>().unwrap();
         
         if command[0] == "up" {
-            depth -= command[1].parse::<i32>().unwrap();
+            depth -= value;
         }
         else if command[0] == "down" {
-            depth += command[1].parse::<i32>().unwrap();
+            depth += value;
         }
         else if command[0] == "forward" {
-            horizontal += command[1].parse::<i32>().unwrap();
+            horizontal += value;
         }
     }
 
@@ -33,14 +34,16 @@ fn main() {
 
     for line in &measurement {
         let command: Vec<&str> = line.clone().split(" ").collect();
+        let value = command[1].parse::<i32>().unwrap();
+
         if command[0] == "up" {
-            aim -= command[1].parse::<i32>().unwrap();
+            aim -= value
         }
         else if command[0] == "down" {
-            aim += command[1].parse::<i32>().unwrap();
+            aim += value
         }
         else if command[0] == "forward" {
-            let x = command[1].parse::<i32>().unwrap();
+            let x = value;
             horizontal += x;
             depth += aim * x;
         }
